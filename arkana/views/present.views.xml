@@ -14,8 +14,8 @@
                 <form>
                     <sheet>
                         <group string="Daftar Hadir">
-                            <field name="hari"/>
-                            <field name="tanggal_hari"/>
+                            <field name="hari" readonly='1'/>
+                            <field name="tanggal_hari" readonly='1'/>
                             <field name="guru_id" widget="many2one_tags"/>
                             <field name="nama_ruangan_id" widget="many2one_tags"/>
                             <field name="pelajaran"/>
