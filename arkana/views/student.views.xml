@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="arkana_faris_student_form" model="ir.ui.view">
+            <field name="name">arkana.faris_student.form</field>
+            <field name="model">arkana.faris_student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Siswa">
+                            <field name="image_siswa" widget="image" style="width:250px;height:300px"/>
+                            <field name="nama_siswa"/>
+                            <field name="jenis_kelamin"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="arkana_faris_student_tree" model="ir.ui.view">
+            <field name="name">arkana.faris_student.tree</field>
+            <field name="model">arkana.faris_student</field>
+            <field name="arch" type="xml">
+                <tree limit="20" default_order="create_date desc">
+                    <field name="image_siswa" optional="hide" />
+                    <field name="nama_siswa" optional="show"/>
+                    <field name="jenis_kelamin" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="arkana_faris_student_kanban" model="ir.ui.view">
+            <field name="name">arkana.faris_student.kanban</field>
+            <field name="model">arkana.faris_student</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <style>
+                                .kanban-border {
+                                    border: 1px solid #ccc; 
+                                    padding: 10px;
+                                    flex-direction: row;
+                                    width: 250px; 
+                                    height: 300px;
+                                }
+                            </style>
+                            <div t-attf-class="oe_kanban_global_click kanban-border">
+                                <div t-attf-class="oe_kanban_content">
+                                    <div>
+                                        <div style="width: 250px; height: 300px;">
+                                            <field name="image_siswa" widget="image" string="Foto siswa"/>
+                                        </div>
+                                        <div style="margin-left: 10px;">
+                                            <div style="font-weight: bold;"> 
+                                                <field name="nama_siswa"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="arkana_faris_student_action" model="ir.actions.act_window">
+            <field name="name">siswa</field>
+            <field name="res_model">arkana.faris_student</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Data siswa Tidak Ditemukan
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="arkana_student" name="Siswa" sequence="3" parent="arkana_config" action="arkana_faris_student_action"/>
+    </data>
+</odoo>

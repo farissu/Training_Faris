@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="arkana_faris_teacher_form" model="ir.ui.view">
+            <field name="name">arkana.faris_teacher.form</field>
+            <field name="model">arkana.faris_teacher</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Guru">
+                            <field name="image_guru" widget="image" style="width:250px;height:300px"/>
+                            <field name="nama_guru"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="arkana_faris_teacher_tree" model="ir.ui.view">
+            <field name="name">arkana.faris_teacher.tree</field>
+            <field name="model">arkana.faris_teacher</field>
+            <field name="arch" type="xml">
+                <tree limit="20" default_order="create_date desc">
+                    <field name="image_guru" optional="show" />
+                    <field name="nama_guru" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="arkana_faris_teacher_kanban" model="ir.ui.view">
+            <field name="name">arkana.faris_teacher.kanban</field>
+            <field name="model">arkana.faris_teacher</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <style>
+                                .kanban-border {
+                                    border: 1px solid #ccc; 
+                                    padding: 10px;
+                                    flex-direction: row;
+                                    width: 250px; 
+                                    height: 300px;
+                                }
+                            </style>
+                            <div t-attf-class="oe_kanban_global_click kanban-border">
+                                <div t-attf-class="oe_kanban_content">
+                                    <div>
+                                        <div style="width: 250px; height: 300px;">
+                                            <field name="image_guru" widget="image" string="Foto Guru"/>
+                                        </div>
+                                        <div style="margin-left: 10px;">
+                                            <div style="font-weight: bold;"> 
+                                                <field name="nama_guru"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="arkana_faris_teacher_action" model="ir.actions.act_window">
+            <field name="name">Guru</field>
+            <field name="res_model">arkana.faris_teacher</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Data Guru Tidak Ditemukan
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="arkana_teacher" name="Guru" sequence="3" parent="arkana_config" action="arkana_faris_teacher_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_arkana_faris_present,access_arkana_faris_present,model_arkana_faris_present,base.group_user,1,1,1,1
+access_arkana_faris_teacher,access_arkana_faris_teacher,model_arkana_faris_teacher,base.group_user,1,1,1,1
+access_arkana_faris_room,access_arkana_faris_room,model_arkana_faris_room,base.group_user,1,1,1,1
+access_arkana_faris_student,access_arkana_faris_student,model_arkana_faris_student,base.group_user,1,1,1,1

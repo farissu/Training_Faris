@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="arkana_faris_room_form" model="ir.ui.view">
+            <field name="name">arkana.faris_room.form</field>
+            <field name="model">arkana.faris_room</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Gedung">
+                            <field name="image_ruangan" widget="image" style="width:250px;height:300px"/>
+                            <field name="nama_ruangan"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="arkana_faris_room_tree" model="ir.ui.view">
+            <field name="name">arkana.faris_room.tree</field>
+            <field name="model">arkana.faris_room</field>
+            <field name="arch" type="xml">
+                <tree limit="20" default_order="create_date desc">
+                    <field name="image_ruangan" optional="show"/>
+                    <field name="nama_ruangan" optional="show"/>
+                </tree>
+            </field>
+        </record>
+        <record id="arkana_faris_room_kanban" model="ir.ui.view">
+            <field name="name">arkana.faris_room.kanban</field>
+            <field name="model">arkana.faris_room</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <style>
+                                .kanban-border {
+                                    border: 2px solid #0074D9; 
+                                    padding: 10px;
+                                    flex-direction: row;
+                                    width: 250px;
+                                    height: 300px;
+                                    background-color: #f7f7f7;
+                                }
+                                .kanban-content {
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                                .image-container {
+                                    width: 100%; /* Lebar gambar mengisi seluruh lebar kotak */
+                                    height: 200px; /* Tinggi gambar sesuaikan dengan kebutuhan Anda */
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                            </style>
+                            <div t-attf-class="oe_kanban_global_click kanban-border">
+                                <div t-attf-class="kanban-content">
+                                    <div class="image-container">
+                                        <field name="image_ruangan" widget="image" string="Foto Ruangan"/>
+                                    </div>
+                                    <div style="margin-top: 10px;font-weight: bold;">
+                                        <field name="nama_ruangan"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="arkana_faris_room_action" model="ir.actions.act_window">
+            <field name="name">Ruangan</field>
+            <field name="res_model">arkana.faris_room</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Ruangan Tidak Ditemukan
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="arkana_room" name="Ruangan" sequence="4" parent="arkana_config" action="arkana_faris_room_action"/>
+    </data>
+</odoo>

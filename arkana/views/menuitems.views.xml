@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem id="arkana_root" name="Absensi" sequence="0"/>
+        <menuitem id="arkana_config" name="Pengaturan" parent="arkana_root" sequence="99"/>
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the form view -->
+        <record id="arkana_faris_present_form" model="ir.ui.view">
+            <field name="name">arkana.faris_present.form</field>
+            <field name="model">arkana.faris_present</field>
+            <field name="arch" type="xml">
+            <header>
+
+                <button name="hadir" string="kehadiran" type="object" class="oe_highlight"/>
+     
+            </header>
+                <form>
+                    <sheet>
+                        <group string="Daftar Hadir">
+                            <field name="hari"/>
+                            <field name="tanggal_hari"/>
+                            <field name="guru_id" widget="many2one_tags"/>
+                            <field name="nama_ruangan_id" widget="many2one_tags"/>
+                            <field name="pelajaran"/>
+                            <field name="siswa_id" widget="many2many_tags"/>
+                            <field name="kehadiran"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Define the tree view -->
+        <record id="arkana_faris_present_tree" model="ir.ui.view">
+            <field name="name">arkana.faris_present.tree</field>
+            <field name="model">arkana.faris_present</field>
+            <field name="arch" type="xml">
+                <tree limit="20" default_order="create_date desc">
+                    <field name="tanggal_hari" optional="show"/>
+                    <field name="guru_id" optional="show"/>
+                    <field name="nama_ruangan_id" optional="show"/>
+                    <field name="pelajaran" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Define the kanban view -->
+        <record id="arkana_faris_present_kanban" model="ir.ui.view">
+            <field name="name">arkana.faris_present.kanban</field>
+            <field name="model">arkana.faris_present</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click oe_kanban_card">
+                                <div style="font-weight: bold;">
+                                    <div>
+                                        <field name="hari" string="hari"/>
+                                    </div>
+                                    <div>
+                                        <field name="tanggal_hari" string="tanggal"/>
+                                    </div>
+                                    <div>
+                                        <field name="pelajaran"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        
+
+        <!-- Define the action for the views -->
+        <record id="arkana_faris_present_action" model="ir.actions.act_window">
+            <field name="name">Daftar Hadir</field>
+            <field name="res_model">arkana.faris_present</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Absensi Tidak Ditemukan
+                </p>
+            </field>
+        </record>
+
+        <!-- Define the menu item -->
+        <menuitem id="arkana_root" name="kehadiran" sequence="2" action="arkana_faris_present_action"/>
+    </data>
+</odoo>
