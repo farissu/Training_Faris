@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Define the form view -->
         <record id="arkana_faris_present_form" model="ir.ui.view">
             <field name="name">arkana.faris_present.form</field>
             <field name="model">arkana.faris_present</field>
@@ -19,7 +18,13 @@
                             <field name="guru_id" widget="many2one_tags"/>
                             <field name="nama_ruangan_id" widget="many2one_tags"/>
                             <field name="pelajaran"/>
-                            <field name="siswa_id" widget="many2many_tags"/>
+                            <field name="siswa_id">
+                                <tree>
+                                  <field name="image_siswa" options="{'size':[80,80]}" widget="image"/>
+                                  <field name="nama_siswa"/>
+                                  <field name="jenis_kelamin"/>
+                                </tree>
+                              </field>
                             <field name="kehadiran"/>
                         </group>
                     </sheet>
@@ -27,7 +32,6 @@
             </field>
         </record>
 
-        <!-- Define the tree view -->
         <record id="arkana_faris_present_tree" model="ir.ui.view">
             <field name="name">arkana.faris_present.tree</field>
             <field name="model">arkana.faris_present</field>
@@ -41,7 +45,6 @@
             </field>
         </record>
 
-        <!-- Define the kanban view -->
         <record id="arkana_faris_present_kanban" model="ir.ui.view">
             <field name="name">arkana.faris_present.kanban</field>
             <field name="model">arkana.faris_present</field>
@@ -70,7 +73,6 @@
         
         
 
-        <!-- Define the action for the views -->
         <record id="arkana_faris_present_action" model="ir.actions.act_window">
             <field name="name">Daftar Hadir</field>
             <field name="res_model">arkana.faris_present</field>
