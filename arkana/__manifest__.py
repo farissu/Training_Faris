@@ -23,7 +23,8 @@
         'views/menuitems.views.xml',
         'views/teacher.views.xml',
         'views/room.views.xml',
-        'views/student.views.xml'
+        'views/student.views.xml',
+        'views/download_paper.xml'
     ],
 
     'installable': True,

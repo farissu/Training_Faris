@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+        <record id="paperformat_siswa" model="report.paperformat">
+            <field name="name">Rekap Siswa</field>
+            <field name="default" eval="True" />
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+          </record>
+        <report 
+        id="absen_template_download" 
+        model="arkana.faris_present" 
+        string="Kartu absen" 
+        report_type="qweb-pdf" 
+        name="arkana.kartu_template" 
+        file="arkana.kartu_template" 
+        menu="True" 
+        paperformat="arkana.paperformat_siswa" 
+        print_report_name=" 'Absensi' + '_' + str(object.hari) + '_' + str(object.tanggal_hari)"/>
+        <template id="kartu_template">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.html_container">
+                    <t t-call="web.internal_layout">
+                        <style>
+                            .header{text-align: center;font-size: 25px;position: relative;font-weight: bold;}img{height: 90px;width: 90px;position: absolute;}
+
+                        </style>
+                        <div class="page">
+                            <div class="kartu">
+                                <img src="https://i.imgur.com/PVXrmfZ.jpg" alt="Logo"/>
+                                <div class="header">
+                                    Fitur Belum jadi Min 
+                                </div>
+                                <!-- <div style="position: absolute;text-align: center;font-size: 25px; ;margin-left: 270px;margin-top: 0px;">
+                                    <t t-esc="doc.hari"/>
+                                </div>
+                                <div style="margin-left: 70px;position: relative;text-align: center;font-size: 25px;">
+                                    <t t-esc="doc.tanggal_hari"/>
+                                </div>
+                                <p style="margin-top: 35px;">
+                                    Faris Ganteng
+                                </p>
+                                <div style="margin-top: 20px;margin-left: 30px;position: absolute;">
+                                    Guru :
+                                </div>
+                                <div style="margin-top: 20px;margin-left: 150px;position: absolute;">
+                                    <t t-esc="doc.guru_id.nama_guru"/>
+                                </div>
+                                <div style="margin-top: 40px;margin-left: 30px;position: absolute;">
+                                    Nama Ruangan :
+                                </div>
+                                <div style="margin-top: 40px;margin-left: 150px;position: absolute;">
+                                    <t t-esc="doc.nama_ruangan_id.nama_ruangan"/>
+                                </div>
+                                <div style="margin-top: 60px;margin-left: 30px;position: absolute;">
+                                    Pelajaran :
+                                </div>
+                                <div style="margin-top: 60px;margin-left: 150px;position: absolute;">
+                                    <t t-esc="doc.pelajaran"/>
+                                </div>
+                                <div style="margin-top: 80px;margin-left: 30px;position: absolute;">
+                                    Siswa :
+                                </div>
+                                <div style="margin-top: 80px;margin-left: 150px;position: absolute;">
+                                    <t t-esc="doc.siswa_id.nama_siswa"/>
+                                </div> -->
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

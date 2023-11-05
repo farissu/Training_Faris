@@ -24,6 +24,10 @@ class Present(models.Model):
     ], string='Pelajaran')
     siswa_id = fields.Many2many(string="Siswa", comodel_name="arkana.faris_student")
     kehadiran = fields.Boolean('kehadiran', default=False)
+    status = fields.Selection([
+        ('rancangan', 'Rancangan'),
+        ('selesai', 'Selesai')
+        ],default="rancangan")
     @api.depends('tanggal_hari')
     def convert_hari(self):
         hari_list = {
@@ -43,3 +47,10 @@ class Present(models.Model):
 
     def hadir(self):
         self.kehadiran = True
+        # return self.env.ref('arkana.absen_template_download')._render_qweb_pdf(self)
+    
+    def rancangan_button(self):
+        self.status = 'rancangan'
+
+    def selesai_button(self):
+        self.status = 'selesai'

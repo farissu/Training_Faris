@@ -7,6 +7,10 @@
             <field name="arch" type="xml">                
                 <form>
                     <header>
+                        <field name="status" widget="statusbar"
+                        statusbar_visible="racangan, selesai" />
+                      <button type="object" name="rancangan_button" string="Rancangan" />
+                      <button type="object" name="selesai_button" string="Selesai" />
                         <button name="hadir" string="kehadiran" type="object" class="oe_highlight"/>
                     </header>
                     <sheet>
